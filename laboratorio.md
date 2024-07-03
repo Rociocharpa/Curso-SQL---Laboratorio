@@ -1,0 +1,48 @@
+Base de datos
+
+ Laboratorio de Aguas y Efluentes
+
+Introducción
+
+El laboratorio de Aguas y Efluentes es una entidad que presta servicio a la comunidad. En este, se llevan adelante análisis fisicoquímico y microbiológico de muestras de agua o de efluentes industriales o cloacales, buscando así determinar la concentración de parámetros relevantes en cada tipo de muestras y observar si estos se encuentran dentro de los limites establecidos por las normativas correspondientes.
+
+Problemática
+
+Se trabaja en una base de datos destinada a almacenar la información correspondiente a cada cliente que requiere determinar la concentración de uno o más parámetros, de una o más muestras. 
+
+Descripción 
+
+1.	Gestión de Clientes: Se requiere llevar un registro detallado de los clientes que solicitan análisis de muestras. 
+
+2.	Gestión del Ingreso de muestras: Es importante garantizar la trazabilidad de la muestra, por lo tanto, se le da ingreso con un número de muestra y así poder identificarla.
+
+3.	Gestión de Resultados: Para llevarlos de forma ordenada ya que, a partir de estos, se debe elaborar un informe de entrega al cliente.
+
+Objetivos
+
+Diseñar e implementar una base de datos relacional que satisfaga todas las necesidades de gestión de muestras de un laboratorio con sus respectivos resultados. Esta deberá ser eficiente, dinámica y fácil de manejar.
+
+Descripción de la base de datos
+
+Tablas
+
+1.	CLIENTES
+•	Almacena información de los clientes que traen muestras.
+•	Atributos: ID_CLIENTE, NOMBRE_CLIENTE, EMPRESA, MAIL, TELEFONO
+
+2.	MUESTRAS
+•	Almacena información correspondiente a la muestra como el cliente que la trae al laboratorio, como la fecha en la que ingresa. Además, el tipo de muestra que puede ser agua, efluente industrial o efluente cloacal.
+•	Atributos: ID_MUESTRAS, N_ORDEN, ID_CLIENTE, FECHA_RECEPCION, TIPO_DE_MUESTRA, PROCEDENCIA, DESCRIPCION
+
+3.	DETERMINACIONES
+•	Contiene información de la determinación que se realiza a cada muestra
+•	Atributos: ID_DETERMINACION, ID_MUESTRAS, NOMBRE
+
+4.	RESULTADOS
+•	Almacena los resultados obtenidos en cada determinación realizada en cada muestra.
+•	Atributos: ID_RESULTADOS, ID_DETERMINACION, RESULTADO
+
+5.	TECNICOS
+•	Almacena información de los técnicos capacitados para la realización de las determinaciones.
+•	Atributos: ID_TECNICO, NOMBRE, APELLIDO, ESPECIALIDAD, TELEFONO, ID_DETERMINACION
+
