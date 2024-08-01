@@ -28,7 +28,7 @@ Tablas
 
 1.	CLIENTES
 •	Almacena información de los clientes que traen muestras.
-•	Atributos: ID_CLIENTE, NOMBRE_CLIENTE, EMPRESA, MAIL, TELEFONO
+•	Atributos: ID_CLIENTE, NOMBRE_CLIENTE, EMPRESA, MAIL, TELEFONO 
 
 2.	MUESTRAS
 •	Almacena información correspondiente a la muestra como el cliente que la trae al laboratorio, como la fecha en la que ingresa. Además, el tipo de muestra que puede ser agua, efluente industrial o efluente cloacal.
@@ -38,11 +38,39 @@ Tablas
 •	Contiene información de la determinación que se realiza a cada muestra
 •	Atributos: ID_DETERMINACION, ID_MUESTRAS, NOMBRE
 
-4.	RESULTADOS
-•	Almacena los resultados obtenidos en cada determinación realizada en cada muestra.
-•	Atributos: ID_RESULTADOS, ID_DETERMINACION, RESULTADO
-
-5.	TECNICOS
+4.	TECNICOS
 •	Almacena información de los técnicos capacitados para la realización de las determinaciones.
-•	Atributos: ID_TECNICO, NOMBRE, APELLIDO, ESPECIALIDAD, TELEFONO, ID_DETERMINACION
+•	Atributos: ID_TECNICO, NOMBRE, APELLIDO, ESPECIALIDAD, TELEFONO
+
+5.	RESULTADOS
+•	Almacena los resultados obtenidos en cada determinación realizada en cada muestra.
+•	Atributos: ID_RESULTADOS, ID_DETERMINACION, RESULTADO, UNIDAD, ID_TECNICO
+
+
+
+Diagrama Entidad - Relación
+
+
+![image](https://github.com/user-attachments/assets/e8cc0a10-86ba-42c3-adbc-a692b4dc5639)
+
+
+Vistas
+
+1.	VIEW_DETERMINACIONES: Con esta vista se visualiza el número de la muestra, el tipo y los parámetros que hay que determinar. Involucra la tabla MUESTRAS y la tabla DETERMINACIONES.
+   
+2.	VIEW_DETERM_RESULTADOS: Se visualiza el número de la muestra, el tipo y todos los parámetros, estén realizados o no, con su resultado si corresponde.  Involucra la vista anteriormente mencionada y la tabla RESULTADOS.
+ 
+3.	VIEW_DETERM_FALTANTES: Con la utilización de esta view se visualiza cuáles son las determinaciones que aún no se han realizado, por lo tanto, las que quedan pendientes para llevar adelante a la brevedad.
+
+Funciones
+
+1.	FN_DETERMINACION_ESTADO_MUESTRA: Esta función me permite saber el estado de la muestra verificando el resultado de cada determinación que se realiza a cada una de las muestras y devolviendo un estado pendiente cuando no contiene un valor y terminado cuando la determinación está realizada y la información cargada.
+   
+Stored Procedures
+
+1.	INSERTAR_MUESTRA: Este stored procedure se utiliza para insertar una nueva muestra.
+   
+2.	REGISTRAR_TECNICO: Este SP se utiliza para el registro de nuevos técnicos.
+   
+3.	PR_CONVERTIR_UNIDADES: Este SP me permite hacer una conversión de unidades para pasar de mg/L a g/L o, viceversa. 
 
