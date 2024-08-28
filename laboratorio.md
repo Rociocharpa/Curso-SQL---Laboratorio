@@ -78,6 +78,7 @@ Stored Procedures
 3.	PR_CONVERTIR_UNIDADES: Este SP me permite hacer una conversión de unidades para pasar de mg/L a g/L o, viceversa.
 
 Usuarios y permisos
+
 Se crean dos usuarios en la base de datos donde se encuentra el director y un técnico. 
 El director va a tener acceso a las tablas qu corresponde al rubro, es decir que va a poder manipular las tablas de muestras, determinaciones, resultados, tecnicos y clientes. 
 La manipulación de estas tablas incluye insertar nuevos registros, eliminarlos, actualizarlos y por supuesto, la lectura de los registros.
