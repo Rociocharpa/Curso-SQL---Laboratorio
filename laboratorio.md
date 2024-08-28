@@ -1,6 +1,7 @@
 Base de datos
 
  Laboratorio de Aguas y Efluentes
+ 
  ![image](https://github.com/user-attachments/assets/2c8e7a2f-ac3d-4fae-a3cc-0666b7dc1ba7)
 
 
