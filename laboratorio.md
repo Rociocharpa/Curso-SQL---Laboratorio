@@ -1,6 +1,8 @@
 Base de datos
 
  Laboratorio de Aguas y Efluentes
+ ![image](https://github.com/user-attachments/assets/2c8e7a2f-ac3d-4fae-a3cc-0666b7dc1ba7)
+
 
 Introducción
 
@@ -72,5 +74,12 @@ Stored Procedures
    
 2.	REGISTRAR_TECNICO: Este SP se utiliza para el registro de nuevos técnicos.
    
-3.	PR_CONVERTIR_UNIDADES: Este SP me permite hacer una conversión de unidades para pasar de mg/L a g/L o, viceversa. 
+3.	PR_CONVERTIR_UNIDADES: Este SP me permite hacer una conversión de unidades para pasar de mg/L a g/L o, viceversa.
+
+Usuarios y permisos
+Se crean dos usuarios en la base de datos donde se encuentra el director y un técnico. 
+El director va a tener acceso a las tablas qu corresponde al rubro, es decir que va a poder manipular las tablas de muestras, determinaciones, resultados, tecnicos y clientes. 
+La manipulación de estas tablas incluye insertar nuevos registros, eliminarlos, actualizarlos y por supuesto, la lectura de los registros.
+El tecnico manupula las mismas tablas pero solo tiene permiso de lectura y de inserción de datos.
+
 
