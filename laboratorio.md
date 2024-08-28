@@ -39,7 +39,7 @@ Tablas
 
 3.	DETERMINACIONES
 •	Contiene información de la determinación que se realiza a cada muestra
-•	Atributos: ID_DETERMINACION, ID_MUESTRAS, NOMBRE
+•	Atributos: ID_DETERMINACION, ID_MUESTRAS, PARAMETROS
 
 4.	TECNICOS
 •	Almacena información de los técnicos capacitados para la realización de las determinaciones.
@@ -49,12 +49,16 @@ Tablas
 •	Almacena los resultados obtenidos en cada determinación realizada en cada muestra.
 •	Atributos: ID_RESULTADOS, ID_DETERMINACION, RESULTADO, UNIDAD, ID_TECNICO
 
+Inserción de datos
+
+Esta se llevo a cabo de forma manual.
 
 
 Diagrama Entidad - Relación
 
 
-![image](https://github.com/user-attachments/assets/e8cc0a10-86ba-42c3-adbc-a692b4dc5639)
+![image](https://github.com/user-attachments/assets/e6722c7a-25fd-414a-a755-dccee10d270b)
+
 
 
 Vistas
@@ -77,6 +81,10 @@ Stored Procedures
    
 3.	PR_CONVERTIR_UNIDADES: Este SP me permite hacer una conversión de unidades para pasar de mg/L a g/L o, viceversa.
 
+Trigger
+
+1. TR_INSERT_MUESTRA : Este trigger saltará ante una inserción de registros en la tabla muestras.
+
 Usuarios y permisos
 
 Se crean dos usuarios en la base de datos donde se encuentra el director y un técnico. 
@@ -84,4 +92,7 @@ El director va a tener acceso a las tablas qu corresponde al rubro, es decir que
 La manipulación de estas tablas incluye insertar nuevos registros, eliminarlos, actualizarlos y por supuesto, la lectura de los registros.
 El tecnico manupula las mismas tablas pero solo tiene permiso de lectura y de inserción de datos.
 
+Backup
+
+Se realiza un backup de datos y estructuras completo cada un periodo de 6 meses. Y un backup de datos de las tablas relevantes, con movimiento masivo diarios, regularmente.
 
