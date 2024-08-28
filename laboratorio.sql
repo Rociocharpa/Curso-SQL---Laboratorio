@@ -312,38 +312,6 @@ DELIMITER ;
 
 CALL REGISTRAR_TECNICO('Pedro', 'Ruiz', 'analista', '11 6789 1234');
 
--- STORED PROCEDURES PARA OBTENER ESTADISTICAS DE LAS DETERMINACIONES
-DELIMITER //
-CREATE PROCEDURE obtener_estadisticas_parametro(
-    IN parametro VARCHAR(20),
-    OUT max_resultado DECIMAL(10, 2),
-    OUT min_resultado DECIMAL(10, 2),
-    OUT promedio DECIMAL(10, 2)
-)
-BEGIN
-    SELECT MAX(resultado) INTO max_resultado
-    FROM resultados
-    JOIN determinaciones ON resultados.id_determinacion = determinaciones.id
-    WHERE determinaciones.parametro = parametro;
-    
-    SELECT MIN(resultado) INTO min_resultado
-    FROM resultados
-    JOIN determinaciones ON resultados.id_determinacion = determinaciones.id
-    WHERE determinaciones.parametro = parametro;
-    
-    SELECT AVG(resultado) INTO promedio
-    FROM resultados
-    JOIN determinaciones ON resultados.id_determinacion = determinaciones.id
-    WHERE determinaciones.parametro = parametro;
-END //
-
-DELIMITER ;
-
-CALL obtener_estadisticas_parametro('pH', @max_resultado, @min_resultado, @promedio);
-SELECT @max_resultado AS max_resultado, @min_resultado AS min_resultado, @promedio AS promedio;
-
-
-
 -- STORED PROCEDURES PARA PASAJE DE UNIDADES
 
 DROP PROCEDURE IF EXISTS PR_CONVERTIR_UNIDADES;
@@ -392,3 +360,20 @@ FOR EACH ROW
 BEGIN 
 END;
 // DELIMITER;
+
+-- CREACION DE USUARIOS Y PERMISOS
+CREATE USER IF NOT EXISTS "director"@"localhost" IDENTIFIED BY "ABC123";
+
+GRANT SELECT , INSERT , DELETE , UPDATE , ALTER ON db_laboratorio.clientes to "director"@"localhost" ;
+GRANT SELECT , INSERT , DELETE , UPDATE , ALTER ON db_laboratorio.determinaciones to "director"@"localhost" ;
+GRANT SELECT , INSERT , DELETE , UPDATE , ALTER ON db_laboratorio.muestras to "director"@"localhost" ;
+GRANT SELECT , INSERT , DELETE , UPDATE , ALTER ON db_laboratorio.resultados to "director"@"localhost" ;
+GRANT SELECT , INSERT , DELETE , UPDATE , ALTER ON db_laboratorio.tecnicos to "director"@"localhost" ;
+
+CREATE USER IF NOT EXISTS "tecnico1"@"localhost" IDENTIFIED BY "aaa111" ;
+
+GRANT SELECT , INSERT ON db_laboratorio.clientes to "tecnico1"@"localhost" ;
+GRANT SELECT , INSERT ON db_laboratorio.determinaciones to "tecnico1"@"localhost" ;
+GRANT SELECT , INSERT ON db_laboratorio.muestras to "tecnico1"@"localhost" ;
+GRANT SELECT , INSERT ON db_laboratorio.resultados to "tecnico1"@"localhost" ;
+GRANT SELECT , INSERT ON db_laboratorio.tecnicos to "tecnico1"@"localhost" ;
